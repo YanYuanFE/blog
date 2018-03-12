@@ -1,14 +1,14 @@
 ---
 title: Redux实现简单计数器
-date: 2018-02-26 20:37:16
-banner: http://o9qn9041y.bkt.clouddn.com/stock-photo-245282361.jpg
+date: 2018-02-7 20:37:16
+banner: http://o9qn9041y.bkt.clouddn.com/photo-1453928582365-b6ad33cbcf64.jpeg
 tags:
  - Redux
 ---
 
 > redux专注于状态管理，和react解耦，redux也可以结合Angular一起使用。本文结合实例讲解Redux的使用，可以更好的理解Redux。
 
-![image](http://o9qn9041y.bkt.clouddn.com/recatrouter.png)
+![image](http://o9qn9041y.bkt.clouddn.com/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67.png)
 
 <!--more-->
 

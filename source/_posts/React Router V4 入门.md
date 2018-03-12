@@ -30,11 +30,11 @@ npm install react-router-dom --save
 
 ### 使用
 
-**Router**
+#### Router
 
 react-router4的使用首先需要选择Router，Router用于包裹在应用最外层。Router有两种类型：HashRouter和BrowserRouter，其表现方式也有所不同，使用时需要区分。
 
-**HashRouter与BrowserRouter**
+#### HashRouter与BrowserRouter
 
 从表面区分HashRouter和BrowserRouter的方法就是HashRouter的url中有个#，例如localhost:3000/#，HashRouter通过hash值来对路由进行控制。如果你使用HashRouter，你的路由就会默认有这个#。  
 
@@ -48,7 +48,7 @@ HashRouter和BrowserRouter都具有basename属性，如果你的URL不是位于�
 <Link to="/today"/> // 渲染为 <a href="/calendar/today">
 ```
 
-**Route**
+#### Route
 Route是Router的子元素，控制路径对应显示的组件。常用属性有exact、path以及component。
 考虑以下代码：
 
@@ -58,7 +58,7 @@ Route是Router的子元素，控制路径对应显示的组件。常用属性有
 ```
 react-router4的路由是包含性的，多个Route可以同时进行匹配和渲染，exact控制到路径匹配成功时不会再继续向下匹配，在面代码中，我们试图根据路径渲染 HomePage 或者 UsersPage。如果从Route删除了 exact 属性，那么在浏览器中访问 /users 时，HomePage 和 UsersPage 组件将同时被渲染。
 
-**Switch**
+#### Switch
 
 在Router组件中的任意位置创建多个<Route>，但通常我们会把它们放在同一个位置。使用<Switch>组件来包裹一组<Route>。<Switch>会遍历自身的子元素（即路由）并对第一个匹配当前路径的元素进行渲染。考虑如下代码：
 
@@ -72,7 +72,7 @@ react-router4的路由是包含性的，多个Route可以同时进行匹配和�
 
 如果去掉Switch组件，当我们访问/user的时候，路由会同时匹配“/”和/user，将同时渲染DashBoard和User组件。
 
-**Link vs NavLink**
+#### Link vs NavLink
 
 react-router4提供了两种导航API，用于页面切换，当页面切换时，页面不会重新加载，但是组件会被重新渲染。它们作用相同，但NavLink在匹配URL成功时，可以提供一些额外的样式能力。
 
@@ -103,7 +103,7 @@ NavLink可以给当前匹配成功的链接提供一个className类名，常在T
 ```
 
 
-**路径参数**
+#### 路径参数
 在react router4中，match用于获取路径上的参数，match是使用<Route>渲染时传递到组件内的一个props，在react组件内部通过this.props.match获取match的属性，
 考虑如下代码：
 
@@ -122,7 +122,7 @@ match获取的属性主要有：
 
 然后，通过this.props.match.params.id就可以获取路由匹配的id了。
 
-**withRouter**
+#### withRouter
 
 试想，如果组件没有通过<Route>渲染，该如何获取history、match、location等props呢？react router4提供了一个高阶组件withRouter。使用方法如下：
 
