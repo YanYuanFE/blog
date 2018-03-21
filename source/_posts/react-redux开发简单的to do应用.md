@@ -532,5 +532,9 @@ ReactDOM.render(
 document.getElementById('root')
 );
 ```
+浏览器运行效果如下：
+
+![image](http://o9qn9041y.bkt.clouddn.com/%E9%80%89%E5%8C%BA_209.png)
 
 至此，整个To do应用就开发完毕了，对比使用redux开发，react-redux让我们开发react应用的时候更加简单。
+
