@@ -8,7 +8,7 @@ tags:
 
 > React的核心思想是一切皆组件
 
-![image](http://o9qn9041y.bkt.clouddn.com/react.svg)
+![image](http://o9qn9041y.bkt.clouddn.com/react.png)
 
 <!--more-->
 
@@ -91,7 +91,7 @@ const Text = ({ children = 'Hello World!' }) =>
 通常，函数式组件、UI组件、无状态组件这类仅接受props参数进行数据渲染的组件可以称为纯组件，它们接受相同的输入参数props，返回相同的输出，且不具有副作用。
 
 ### 受控组件
-在HTML中，像<input>,<textarea>, 和 <select>这类表单元素会维持自身状态，并根据用户输入进行更新。但在React中，可变的状态通常保存在组件的状态属性中，并且只能用 setState(). 方法进行更新。
+在HTML中，像input,textarea, 和 select这类表单元素会维持自身状态，并根据用户输入进行更新。但在React中，可变的状态通常保存在组件的状态属性中，并且只能用 setState(). 方法进行更新。
 
 在react中，使用state来控制表单元素的数据的显示，同时控制表单元素输入引起值的变化并更新state来进行表单元素数据的更新，其值由React控制的输入表单元素称为“受控组件”。
 考虑如下代码：
