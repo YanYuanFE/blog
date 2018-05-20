@@ -35,9 +35,21 @@ const store = createStore(
 export function applyMiddleware(...middlewares) {
 }
 ```
+单个中间件middleware的结构如下：
+
+``` js
+store => next => action => {
+ 
+ let result = next(action);
+ 
+ return result;
+};
+```
 
 
 当传入多个middlewares参数时，将参数展开，middlewares成为一个数组方便后面操作。
+
+
 
 ``` js
 export function applyMiddleware(...middlewares) {
@@ -59,8 +71,19 @@ export function applyMiddleware(...middlewares) {
 }
 ```
 
-当有多个中间件时，对每个中间件都执行一次并传入midApi，使用数组的map方法对middlewares进行遍历依次执行并返回成为一个新的数组。
-然后，需要一个compose方法来对参数方法进行依次执行，并返回一个函数，最后传入store.dispatch参数。
+当有多个中间件时，对中间件数组middlewares执行map方法，对每个中间件都执行一次并传入midApi，返回成为一个新的数组middlewareChain。
+middlewareChain中保存着middleware执行一次后返回的函数[mid1, mid2, mid3],每个mid的结构如下：
+
+``` js
+next => action => {
+ 
+ let result = next(action);
+ 
+ return result;
+};
+```
+
+然后，需要一个compose方法来对每个mid方法进行依次执行，并返回一个函数，最后传入store.dispatch参数。
 compose方法作用如下：
 
 

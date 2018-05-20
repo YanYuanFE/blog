@@ -132,7 +132,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```
 
 
-相比上一篇文章，主要定义了incrementAsync方法，然后添加到mapDispatch中，在incrementSync中，返回一个函数，在函数内部执行异步操作发起action，执行这个函数就需要redux-thunk来进行处理了。
+相比上一篇文章，主要定义了incrementAsync方法，然后添加到mapDispatch中，在incrementSync中，返回一个函数，在函数内部执行异步操作发起action，普通的action都是一个对象的形式，但是异步的action返回的是一个function，处理这种情况就需要使用redux的中间件：redux-thunk。
 下面是src下index.js的代码：
 
 ``` js
@@ -163,7 +163,14 @@ ReactDOM.render(
 
 ### applyMiddleware实现
 
-回顾applyMiddleware的使用，applyMiddleware是redux提供的API，在src下redux.js文件中，首先让原来的createStore支持传入第二个参数，代码如下：
+applyMiddleware是redux提供的用于使用中间件的API，回顾applyMiddleware的使用：
+
+``` js
+const store = createStore(counter, applyMiddleware(logger, thunk));
+```
+applyMiddleware接收多个中间件参数，返回值作为第二个参数传入createStore。
+
+在src下redux.js文件中，首先让原来的createStore支持传入第二个参数，代码如下：
 
 ``` js
 export function createStore(reducer, enhancer) {
@@ -183,7 +190,7 @@ export function applyMiddleware(middleware) {
     let dispatch = store.dispatch;
 
     const midApi = {
-      getState: store.getState(),
+      getState: store.getState,
       dispatch: (...args) => dispatch(...args)
     }
     dispatch = middleware(midApi)(store.dispatch)
@@ -195,7 +202,7 @@ export function applyMiddleware(middleware) {
 }
 ```
 
-在上述代码中，首先返回一个函数，这个函数即createStore中的参数enhancer，然后这个函数传入createStore参数，再返回一个函数，这个函数传入reducer参数，使用...args进行解构，在函数内部，首先调用createStore获取到原始的store以及dispatch，然后封装一个对象midApi传入中间件内部，midApi包括两个方法getState和dispatch，getState对应store.getState（）方法，dispatch对应store.dispatch方法并透传参数。下面是一个日志中间件的代码：
+applyMiddleware的结构是一个多层柯里化的函数，第一层函数执行后返回一个函数，这个函数即createStore函数中的参数enhancer，然后这个函数传入createStore参数，再返回一个函数，这个函数传入reducer参数，使用...args进行解构，在函数内部，首先调用createStore获取到原始的store以及dispatch，然后封装一个对象midApi传入中间件内部，midApi包括两个方法getState和dispatch，getState对应store.getState方法，dispatch对应store.dispatch方法并透传参数。下面是一个日志中间件的代码：
 
 ``` js
 const logger = store => next => action => {
@@ -207,9 +214,28 @@ const logger = store => next => action => {
 ```
 
 
-由此可见，中间件是一个三层箭头函数，第一层传入store，第二层传入next下一个中间件，即store.dispatch，第三层是在组件中进行调用时，传入action。
+由此可见，中间件函数是一个层层包裹的匿名函数，第一层传入store，第二层传入next下一个中间件，此处指store.dispatch，第三层是在组件中进行调用时，传入action。logger中间件在applyMiddleware中被层层调用，动态的对store和next参数赋值。
 
-接着看上面applyMiddleware的代码，重新定义了dispatch方法，向middleware中依次传入midApi和store.dispatch，再调用时传入action，即成为一个三层函数，对store原有的dispatch方法进行了增强，最后返回一个对象，使用增强的dispatch覆盖原有的store，成为一个新的store。
+接着看上面applyMiddleware的代码，定义了一个由getState和dispatch组成的闭包midApi，中间件函数middleware第一次调用传入midApi返回一个匿名函数，如下：
+``` js
+next => action => {
+ console.log('dispatching', action);
+ let result = next(action);
+ console.log('next state', store.getState());
+ return result;
+};
+```
+紧接着对匿名函数再次调用，传入store.dispatch作为参数next，再次返回一个匿名函数，如下：
+``` js
+action => {
+ console.log('dispatching', action);
+ let result = next(action);
+ console.log('next state', store.getState());
+ return result;
+};
+```
+通过对middleware的层层调用来生成一个新的dispatch方法，新的dispatch
+对store原有的dispatch方法进行了增强，最后返回一个对象，使用解构赋值将增强的dispatch覆盖原有的store.dispatch，成为一个新的store。最终，在组件中发起dispatch的时候使用的就是新的dispatch方法。
 
 到这里，已经让redux支持中间件的用法了，现在来使用一下，还是使用上面项目中的计数器案例，将redux和react-redux替换为自己编写的文件，redux-thunk不变，运行项目，依次点击三个按钮，达到预期效果。
 
