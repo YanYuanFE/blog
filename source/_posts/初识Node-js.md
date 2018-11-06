@@ -2,14 +2,14 @@
 title: 初识Node.js
 date: 2016-10-06 08:53:52
 categories: 前端
-banner: http://o9qn9041y.bkt.clouddn.com/nodejs.png
+banner: http://img.yanyuanfe.cn/nodejs.png
 tags:
 	- Node
 ---
 
 > 任何可以使用JavaScript来编写的应用，最终会由JavaScript编写。
 
-![image](http://o9qn9041y.bkt.clouddn.com/nodejs.png)
+![image](http://img.yanyuanfe.cn/nodejs.png)
 
 <!--more-->
 

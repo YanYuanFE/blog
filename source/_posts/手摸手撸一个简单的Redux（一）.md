@@ -1,7 +1,7 @@
 ---
 title: 手摸手撸一个简单的Redux（一）
 date: 2018-02-26 10:14:41
-banner: http://o9qn9041y.bkt.clouddn.com/photo-1432821596592-e2c18b78144f.jpeg
+banner: http://img.yanyuanfe.cn/photo-1432821596592-e2c18b78144f.jpeg
 tags:
  - Redux
  - React
@@ -9,7 +9,7 @@ tags:
 
 > 理解Redux的原理有助于我们更好的使用它。本文实现Redux的基本API。
 
-![image](http://o9qn9041y.bkt.clouddn.com/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67.png)
+![image](http://img.yanyuanfe.cn/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67.png)
 
 <!--more-->
 
@@ -121,7 +121,7 @@ import { createStore } from './redux';
 
 
 替换redux为刚刚编写的redux.js文件。查看浏览器运行结果。
-![image](http://o9qn9041y.bkt.clouddn.com/%E9%80%89%E5%8C%BA_184.png)
+![image](http://img.yanyuanfe.cn/%E9%80%89%E5%8C%BA_184.png)
 
 如图，与redux的效果一致，达到预期效果。
 

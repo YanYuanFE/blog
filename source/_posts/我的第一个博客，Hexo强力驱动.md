@@ -2,7 +2,7 @@
 title: 我的第一个博客，Hexo强力驱动
 date: 2016-07-03 21:25:24
 categories: 生活
-banner: http://o9qn9041y.bkt.clouddn.com/hexo.png
+banner: http://img.yanyuanfe.cn/hexo.png
 tags:
 	- 杂谈
 	- 生活
@@ -14,7 +14,7 @@ tags:
 
 > 无所谓改变世界，只是继续潜心做自己热爱的事！
 
-![hexo icon](http://o9qn9041y.bkt.clouddn.com/hexo.png)
+![hexo icon](http://img.yanyuanfe.cn/hexo.png)
 
 
 <!--more-->

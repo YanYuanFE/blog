@@ -2,7 +2,7 @@
 title: Ubuntu下搭建前端开发环境和常用工具
 date: 2017-01-21 15:52:25
 categories: 前端
-banner: http://o9qn9041y.bkt.clouddn.com/isodesk.jpg
+banner: http://img.yanyuanfe.cn/isodesk.jpg
 tags:
 	- Linux
 ---
@@ -10,7 +10,7 @@ tags:
 
 > 现在越来越多的公司都要求开发熟悉Linux环境下开发，常用的Linux版本为Ubuntu，在Ubuntu下开发需要的一些环境和工具是必然要了解的。
 
-![image](http://o9qn9041y.bkt.clouddn.com/isodesk.jpg)
+![image](http://img.yanyuanfe.cn/isodesk.jpg)
 
 <!--more-->
 
@@ -98,7 +98,7 @@ $ subl
 
 <div class="tip">
     在使用Sublime时遇到的问题：首先我们都会去安装自己常用的插件来提高自己的开发效率，在安装packge的时候经常遇到安装失败的问题，因为Sublime Text的很多package repository都在托管在github上，但是github在国内的网络环境下有时……。因此在使用Package Control安装插件时，会出现下面的Prompt：
-    ![image](http://o9qn9041y.bkt.clouddn.com/130046_LhBu_243155.png)
+    ![image](http://img.yanyuanfe.cn/130046_LhBu_243155.png)
     解决方案如下：  
     1.  命令行输入：
 

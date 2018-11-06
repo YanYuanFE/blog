@@ -1,7 +1,7 @@
 ---
 title: react-redux开发简单的To do应用
 date: 2018-02-23 16:44:49
-banner: http://o9qn9041y.bkt.clouddn.com/photo-1454165804606-c3d57bc86b40%20%281%29.jpeg
+banner: http://img.yanyuanfe.cn/photo-1454165804606-c3d57bc86b40%20%281%29.jpeg
 tags:
  - Redux
  - React
@@ -9,7 +9,7 @@ tags:
 
 > redux专注于状态管理，和react解耦，为了方便使用，redux的作者封装了一个react专用的库react-redux。
 
-![image](http://o9qn9041y.bkt.clouddn.com/bg2016092101.jpg)
+![image](http://img.yanyuanfe.cn/bg2016092101.jpg)
 
 <!--more-->
 
@@ -135,7 +135,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 整个应用实现的界面如下：
 
-![image](http://o9qn9041y.bkt.clouddn.com/%E9%80%89%E5%8C%BA_183.png)
+![image](http://img.yanyuanfe.cn/%E9%80%89%E5%8C%BA_183.png)
 
 功能主要有，输入文字添加todo事项，显示todo list，点击todo项切换状态，点击tab筛选不同的todo 状态。
 
@@ -534,7 +534,7 @@ document.getElementById('root')
 ```
 浏览器运行效果如下：
 
-![image](http://o9qn9041y.bkt.clouddn.com/%E9%80%89%E5%8C%BA_209.png)
+![image](http://img.yanyuanfe.cn/%E9%80%89%E5%8C%BA_209.png)
 
 至此，整个To do应用就开发完毕了，对比使用redux开发，react-redux让我们开发react应用的时候更加简单。
 

@@ -2,13 +2,13 @@
 title: 深入理解JavaScript之变量提升
 date: 2016-07-16 20:29:10
 categories: 前端
-banner: http://o9qn9041y.bkt.clouddn.com/js.png
+banner: http://img.yanyuanfe.cn/js.png
 tags:
 	- JavaScript
 ---
 > Javascript的变量声明具有Hoisting机制(变量提升)，JavaScript引擎在执行的时候，会把所有变量的声明都提升到当前作用域的最前面。
 
-![image](http://o9qn9041y.bkt.clouddn.com/js.png)
+![image](http://img.yanyuanfe.cn/js.png)
 
 <!--more-->
 

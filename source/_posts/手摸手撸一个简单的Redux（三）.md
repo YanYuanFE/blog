@@ -1,7 +1,7 @@
 ---
 title: 手摸手撸一个简单的Redux（三）
 date: 2018-03-8 10:36:15
-banner: http://o9qn9041y.bkt.clouddn.com/photo-1432821596592-e2c18b78144f.jpeg
+banner: http://img.yanyuanfe.cn/photo-1432821596592-e2c18b78144f.jpeg
 tags:
  - Redux
  - React
@@ -10,7 +10,7 @@ tags:
 > It provides a third-party extension point between dispatching an
 action, and the moment it reaches the reducer. ---中间件
 
-![image](http://o9qn9041y.bkt.clouddn.com/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67.png)
+![image](http://img.yanyuanfe.cn/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67.png)
 
 <!--more-->
 
@@ -159,7 +159,7 @@ ReactDOM.render(
 在index.js中，引入react-thunk模块，然后在createStore中传入第二个参数，使用redux的API applymiddleware对chunk中间件进行包裹。
 上述就是改进后的计数器，运行项目在浏览器预览下，点击incrementAsync按钮，达到预期效果。如下图：
 
-![image](http://o9qn9041y.bkt.clouddn.com/%E9%80%89%E5%8C%BA_195.png)
+![image](http://img.yanyuanfe.cn/%E9%80%89%E5%8C%BA_195.png)
 
 ### applyMiddleware实现
 
@@ -239,7 +239,7 @@ action => {
 
 到这里，已经让redux支持中间件的用法了，现在来使用一下，还是使用上面项目中的计数器案例，将redux和react-redux替换为自己编写的文件，redux-thunk不变，运行项目，依次点击三个按钮，达到预期效果。
 
-![image](http://o9qn9041y.bkt.clouddn.com/%E9%80%89%E5%8C%BA_196.png)
+![image](http://img.yanyuanfe.cn/%E9%80%89%E5%8C%BA_196.png)
 
 ### 编写redux-thunk中间件
 上面已经让我们的redux支持使用中间件，下面来尝试自己编写一个thunk中间件。在src下新建thunk.js：
@@ -281,4 +281,4 @@ function incrementAsync() {
 
 下面来验证一下实现的thunk中间件，在src下替换redux-thunk为./thunk。在浏览器依次点击三个按钮，结果如下，达到预期效果。
 
-![image](http://o9qn9041y.bkt.clouddn.com/%E9%80%89%E5%8C%BA_197.png)
+![image](http://img.yanyuanfe.cn/%E9%80%89%E5%8C%BA_197.png)

@@ -2,7 +2,7 @@
 title: 理解ES6之箭头函数
 date: 2017-02-02 19:49:49
 categories: 前端
-banner: http://o9qn9041y.bkt.clouddn.com/es6.png
+banner: http://img.yanyuanfe.cn/es6.png
 tags:
 	- ES6
 ---
@@ -11,7 +11,7 @@ tags:
 
 > 当你看到箭头函数（Arrow Function）和（=>）的时候，我想你也能很容易将他们联系到一块儿。
 
-![image](http://o9qn9041y.bkt.clouddn.com/es6.png)
+![image](http://img.yanyuanfe.cn/es6.png)
 
 <!--more-->
 

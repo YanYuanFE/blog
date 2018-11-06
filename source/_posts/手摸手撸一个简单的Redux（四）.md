@@ -1,7 +1,7 @@
 ---
 title: 手摸手撸一个简单的Redux（四）
 date: 2018-03-12 20:36:22
-banner: http://o9qn9041y.bkt.clouddn.com/photo-1432821596592-e2c18b78144f.jpeg
+banner: http://img.yanyuanfe.cn/photo-1432821596592-e2c18b78144f.jpeg
 tags:
  - Redux
  - React
@@ -9,7 +9,7 @@ tags:
 
 > 理解Redux的原理有助于我们更好的使用它。本文实现redux的多个中间件合并功能。
 
-![image](http://o9qn9041y.bkt.clouddn.com/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67.png)
+![image](http://img.yanyuanfe.cn/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67.png)
 
 <!--more-->
 
@@ -302,5 +302,5 @@ ReactDOM.render(
 
 npm start启动项目，打开浏览器进行操作，结果如下，达到预期效果。
 
-![image](http://o9qn9041y.bkt.clouddn.com/%E9%80%89%E5%8C%BA_198.png)
+![image](http://img.yanyuanfe.cn/%E9%80%89%E5%8C%BA_198.png)
 

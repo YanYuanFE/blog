@@ -1,7 +1,7 @@
 ---
 title: React Router V4学习笔记
 date: 2018-02-02 11:27:57
-banner: http://o9qn9041y.bkt.clouddn.com/stock-photo-245282361.jpg
+banner: http://img.yanyuanfe.cn/stock-photo-245282361.jpg
 tags:
  - React Router
  - React
@@ -9,7 +9,7 @@ tags:
 
 > React Router现在已经是React开发单页应用必备技能，自升级V4版本以来，许多核心API都进行了重写，践行路由即组件的概念，本文是我学习React Router V4以来的一些总结。
 
-![image](http://o9qn9041y.bkt.clouddn.com/recatrouter.png)
+![image](http://img.yanyuanfe.cn/recatrouter.png)
 
 <!--more-->
 
@@ -117,7 +117,7 @@ NavLink可以给当前匹配成功的链接提供一个className类名，常在T
 
 当访问http://localhost:3001/user/123时，打印this.props.match的内容。
 match获取的属性主要有：
-![image](http://o9qn9041y.bkt.clouddn.com/%E9%80%89%E5%8C%BA_167.png)
+![image](http://img.yanyuanfe.cn/%E9%80%89%E5%8C%BA_167.png)
 
 
 然后，通过this.props.match.params.id就可以获取路由匹配的id了。

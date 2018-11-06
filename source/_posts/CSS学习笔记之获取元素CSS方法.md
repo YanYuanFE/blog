@@ -2,7 +2,7 @@
 title: CSS学习笔记之获取元素Style方法
 date: 2016-07-20 20:30:53
 categories: 前端
-banner: http://o9qn9041y.bkt.clouddn.com/css.png
+banner: http://img.yanyuanfe.cn/css.png
 tags:
 	- CSS
 
@@ -10,7 +10,7 @@ tags:
 
 > CSS 已经如此壮大,以致于一个普通人已经无法把它完整地装进自己的头脑了。
 
-![image](http://o9qn9041y.bkt.clouddn.com/css.png)
+![image](http://img.yanyuanfe.cn/css.png)
 
 <!--more-->
 
