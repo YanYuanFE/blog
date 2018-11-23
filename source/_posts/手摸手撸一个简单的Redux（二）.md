@@ -15,7 +15,7 @@ tags:
 
 在上一篇文章中，实现了一个简单的Redux，主要是对它的API进行了实现。本文将会实现一个简单的react-redux。
 
-使用react开发应用时，通常使用props来进行组件之间的数据传递，但是，当你的应用组件层级嵌套很深时，如果需要从根组件传递数据到最里层，你可能需要向下每层都手动地传递你需要的props，这时，你需要react提供的context API。
+使用react开发应用时，通常使用props来进行组件之间的数据传递，但是，当你的应用组件层级嵌套很深时，如果需要从根组件传递数据到最里层的组件，你可能需要向下每层都手动地传递你需要的props，这时，你需要react提供的context API。
 
 react官方并不建议使用context API，因为context是一个实验性的API，在未来的react版本中可能会被更改。到目前为止，react 16的最新版本已经更改了context API。
 
@@ -113,7 +113,7 @@ MediaQuery.childContextTypes = {
 ```
 
 
-在getChildContext中，context被定义为state的属性，当你需要更新context时，调用this.setState更新state，state更新后，会自动执行getChildContext返回新的context。
+在getChildContext中，返回一个context对象，其值为this.state.type，当你需要更新context时，调用this.setState更新state，state更新后，会自动执行getChildContext返回新的context。
 
 ### react-redux实现
 
@@ -133,7 +133,7 @@ ReactDOM.render(
 );
 ```
 
-从上述代码可以看到，Provider是一个组件，包裹在应用的根组件，接收一个props属性store，在react-redux中，Provider用户提供context。
+从上述代码可以看到，Provider是一个组件，包裹在应用的根组件，接收一个store的props，在react-redux中，Provider组件提供context。
 
 接上一篇文章的项目，在src目录下新建react-redux.js，首先声明Provider组件。
 
@@ -149,7 +149,7 @@ export class Provider extends React.Component {
 Provider组件没有自己的UI渲染逻辑，只负责处理context部分逻辑。
 
 
-```
+``` js
 export class Provider extends React.Component {
   static childContextType = {
     store: PropTypes.object
@@ -168,7 +168,7 @@ export class Provider extends React.Component {
 }
 ```
 
-这一步，在静态方法childContextTypes中定义context属性store的类型为object，在constructor构造函数中，传入store和props，定义this.store并赋值为props.store。这样，在Provider中任何地方都可以使用this.store获取到props中的store属性。
+这一步，在静态方法childContextTypes中定义context属性store的类型为object，在constructor构造函数中，传入props和context，定义this.store并赋值为props.store。这样，在Provider中任何地方都可以使用this.store获取到props中的store属性。
 由于Provider不负责UI渲染，在render方法中，直接返回this.props.children即可，即返回子组件。
 
 最后在Provider中，还需要添加getChildContext方法，用于提供context。
@@ -191,10 +191,10 @@ export class Provider extends React.Component {
 }
 ```
 
-在getChildContext中，将this.store传入context中，让子组件能够获取到context。
+在getChildContext中，生成context对象，此处的context就是this.store，让子组件能够获取到context。
 
 #### connect实现
-在react-redux中，connect负责连接组件，接受一个组件作为参数，将store中的属性传入到组件的props中，并且返回一个新的组件，这种组件设计模式成为高阶组件。当数据变化时，connect将会通知组件。
+在react-redux中，connect负责连接组件，接受一个组件作为参数，将store中的属性传入到组件的props中，并且返回一个新的组件，这种组件设计模式称为高阶组件。当数据变化时，connect将会通知组件更新。
 
 回顾connect的使用。
 
@@ -227,7 +227,7 @@ export const connect = (mapStateToProps = state => state, mapDispatchToProps={})
 ```
 
 
-connect应该是一个双层箭头函数，第一层，传入mapStateToProps和mapDispatchToProps参数，这两个参数是可选参数，需要定义初始值，mapStateToProps定义为函数，mapDispatchToProps有多种参数形式，可以是函数或者对象，这里默认设为空对象。connect方法最终应该返回一个组件，在第二层函数中，传入一个组件作为参数,并返回一个新的组件。上述代码可以改写为如下：
+connect是一个两层的箭头函数，第一层，传入mapStateToProps和mapDispatchToProps参数，这两个参数是可选参数，需要定义初始值，mapStateToProps定义为函数，mapDispatchToProps有多种参数形式，可以是函数或者对象，这里默认设为空对象。connect方法最终应该返回一个组件，在第二层函数中，传入一个组件作为参数,并返回一个新的组件。上述代码可以改写为如下：
 
 
 ``` js
@@ -262,7 +262,9 @@ constructor(props, context) {
 }
 ```
 
-在constructor中，定义了props属性作为state，初始化为空对象。props将传递到wrapComponent上。在render函数中：
+在constructor中，定义了一个props属性作为state，初始化为空对象。props将传递到wrapComponent上。
+
+在render函数中：
 
 
 ``` js
@@ -301,7 +303,7 @@ update() {
 
 在update方法中，首先从context中获取到store，考虑需要connect的数据分为两部分，第一部分是将state中的数据映射到props中，调用connect的第一个参数mapStateToProps传入store.getState（），即传入全局的state。然后得到stateProps对象用于传入props中。然后通过this.setState来更新state，这里通过对象延展语法来对对象进行解构合并新旧state。
 
-上面只实现了state数据的映射，还需要方法的映射，数据的映射较为简单，而方法不能直接使用，因为需要调用store.dispatch一下方法。这里需要在redux中实现一个bindActionCreators方法，按如下方式调用：
+上面只实现了state数据的映射，还需要方法的映射，数据的映射较为简单，而方法不能直接使用，因为需要对方法调用store.dispatch。这里需要在redux中实现一个bindActionCreators方法，按如下方式调用：
 
 
 ``` js
@@ -333,13 +335,13 @@ export function bindActionCreators(creators, dispatch) {
 
 ``` js
 function bindActionCreator(creator, dispatch) {
-return (...args) => dispatch(creator(...args))
+  return (...args) => dispatch(creator(...args))
 }
 ```
 
 
 在bindActionCreator方法中，使用高阶函数返回了一个新的函数，原函数creator经dispatch包装后，使用剩余参数...args透传到被包装函数内。这样是为了保证参数能够传递到最内层。
-到这里，已经实现了connect的两个部分的数据，下面贴一下完整的update方法：
+到这里，已经实现了connect的两个部分的数据，下面是完整的update方法：
 
 
 ``` js
