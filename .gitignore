@@ -8,3 +8,5 @@ public/
 
 # IDE specifics
 .idea
+
+ package-lock.json
