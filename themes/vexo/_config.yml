@@ -14,7 +14,7 @@ menu:
 
 # highlight
 highlight:
-  tomorrow
+  atom-one-dark
 
 # catalog
 catalog: true
@@ -38,7 +38,7 @@ gitment_oauth_secret: d8bd99572bbb807db2aae40bb13de8e3c2ee9049
 
 # uyan
 # if you want to use uyan as your blog comment, plz remove/comment out gitment config
-
+ba_track_id: yanyuanfe
 baidu_id: c8d6cdf0afa74827b1f06d751a403910
 
 about:
