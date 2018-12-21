@@ -15,6 +15,26 @@ tags:
 
 在上一篇文章中，实现了一个简单的Redux，主要是对它的API进行了实现。本文将会实现一个简单的react-redux。
 
+> 本文完整代码请查看Github：https://github.com/YanYuanFE/redux-app
+
+``` bash
+// clone repo
+git clone https://github.com/YanYuanFE/redux-app.git
+
+
+cd redux-app
+
+// checkout branch
+git checkout part-4
+
+// install
+npm install
+
+// start
+npm start
+
+```
+
 使用react开发应用时，通常使用props来进行组件之间的数据传递，但是，当你的应用组件层级嵌套很深时，如果需要从根组件传递数据到最里层的组件，你可能需要向下每层都手动地传递你需要的props，这时，你需要react提供的context API。
 
 react官方并不建议使用context API，因为context是一个实验性的API，在未来的react版本中可能会被更改。到目前为止，react 16的最新版本已经更改了context API。
@@ -221,7 +241,7 @@ connect首先定义为一个高阶函数，
 
 ``` js
 export const connect = (mapStateToProps = state => state, mapDispatchToProps={}) => (WrapComponent) => {
-    return class ConectComponent extends     React.Component {
+    return class ConectComponent extends React.Component {
     }
 }
 ```

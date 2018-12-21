@@ -21,7 +21,7 @@ Webpack是当前最流行的打包工具，当前的最新版本是Webpack4+，�
 ### 在Loader中使用include或者exclude
 配置loader的时候，使用include，可以更精确指定要处理的目录，可以减少不必要的遍历，从而减少性能损失。同样，对于已经明确知道的，不需要处理的目录，则应该予以排除，从而进一步提升性能。故而，合理的设置include和exclude，将会极大地提升Webpack 打包优化速度。
 
-```
+``` js
 module.exports = {
   //...
   module: {
@@ -46,7 +46,7 @@ module.exports = {
 ### module.noParse
 防止 webpack 解析那些任何与给定正则表达式相匹配的文件。忽略的文件中不应该含有 import, require, define 的调用，或任何其他导入机制。忽略大型的类库 可以提高构建性能。
 
-```
+``` js
 module.exports = {
   //...
   module: {
@@ -74,7 +74,7 @@ babel 对一些公共方法使用了非常小的辅助代码，比如 _extend。
 下面的配置禁用了 babel 自动对每个文件的 runtime 注入，而是引入 babel-plugin-transform-runtime 并且使所有辅助代码从这里引用。
 
 
-```
+``` js
 rules: [
   // 'transform-runtime' 插件告诉 babel 要引用 runtime 来代替注入。
   {
@@ -101,7 +101,7 @@ rules: [
 Happypack 的处理思路是：将原有的 webpack 对 loader 的执行过程，从单一进程的形式扩展多进程模式，从而加速代码构建；原本的流程保持不变，这样可以在不修改原有配置的基础上，来完成对编译过程的优化，具体配置如下：
 
 
-```
+``` js
 // webpack.config.js
 const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });

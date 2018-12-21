@@ -16,6 +16,26 @@ tags:
 
 在上一篇文章中实现了redux的中间件机制，支持了传入一个中间件的用法，在实际的redux中，applyMiddleware是支持传入多个中间件的，本文使用redux实现多个中间件合并。
 
+> 本文完整代码请查看Github：https://github.com/YanYuanFE/redux-app
+
+``` bash
+// clone repo
+git clone https://github.com/YanYuanFE/redux-app.git
+
+
+cd redux-app
+
+// checkout branch
+git checkout part-6
+
+// install
+npm install
+
+// start
+npm start
+
+```
+
 ### 中间件合并
 
 使用多个中间件的示例代码如下：

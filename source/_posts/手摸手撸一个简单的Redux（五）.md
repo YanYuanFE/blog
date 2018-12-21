@@ -15,6 +15,26 @@ tags:
 
 之前我们已经完成了redux和react-redux的大部分功能，本文将结合之前的To do list项目来完善我们编写的redux和react-redux，主要是实现combineReducer以及mapDiapatch的默认参数和让mapDispatch支持function参数。
 
+> 本文完整代码请查看Github：https://github.com/YanYuanFE/redux-app
+
+``` bash
+// clone repo
+git clone https://github.com/YanYuanFE/redux-app.git
+
+
+cd redux-app
+
+// checkout branch
+git checkout part-7
+
+// install
+npm install
+
+// start
+npm start
+
+```
+
 ### combineReducer
 随着应用变得越来越复杂，我们会将reducer根据业务进行拆分，拆分后的reducer函数负责独立管理state的一部分。
 

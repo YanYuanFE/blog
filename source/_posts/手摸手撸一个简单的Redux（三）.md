@@ -14,6 +14,26 @@ action, and the moment it reaches the reducer. ---中间件
 
 <!--more-->
 
+> 本文完整代码请查看Github：https://github.com/YanYuanFE/redux-app
+
+``` bash
+// clone repo
+git clone https://github.com/YanYuanFE/redux-app.git
+
+
+cd redux-app
+
+// checkout branch
+git checkout part-5
+
+// install
+npm install
+
+// start
+npm start
+
+```
+
 
 当我们的业务需求变得更为复杂的时候，单纯的在dispatch和reducer中处理业务逻辑已经不具有普遍性。我们需要的是可以组合的，自由插拔的插件机制，redux借鉴koa的中间件思想，实现了redux的middleware。在发出action和执行reducer之间，使用中间件函数对store.dispatch进行改造，所以，redux的middleware是为了增强dispatch而生的。
 
@@ -269,7 +289,7 @@ export default thunk;
 
 这就是redux-thunk的代码，很简单吧，首先判断传入的action是否为fuction，如果是function就执行该action，并传入dispatch和getState， 如下，在incrementAsync的返回函数的参数中，可以接受dispatch和getState两个参数：
 
-```
+``` js
 function incrementAsync() {
   return (dispatch, getState) => {
     setTimeout(() => {

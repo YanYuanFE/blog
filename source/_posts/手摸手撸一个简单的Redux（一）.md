@@ -19,6 +19,26 @@ Redux 试图让 state 的变化变得可预测。
 
 redux已经被越来越多的人使用，理解其原理有助于更好的使用它。阅读redux源码是一个不错的办法，当我们了解了其原理之后，现在来实现一个简单的redux吧。
 
+> 本文完整代码请查看Github：https://github.com/YanYuanFE/redux-app
+
+``` bash
+// clone repo
+git clone https://github.com/YanYuanFE/redux-app.git
+
+
+cd redux-app
+
+// checkout branch
+git checkout part-3
+
+// install
+npm install
+
+// start
+npm start
+
+```
+
 ### 基本API
 如果你使用过redux，应该对redux的API了然于胸吧。redux的基本API包括createStore、getState、subscribe、dispatch。现在回顾一下redux的使用方法：
 
@@ -28,6 +48,7 @@ redux已经被越来越多的人使用，理解其原理有助于更好的使用
 
 ``` js
 export function createStore(reducer) {
+
 }
 ```
 
@@ -90,24 +111,24 @@ return { getState, subscribe, dispatch };
 
 ``` js
 export function createStore(reducer) {
-let currentState;
+  let currentState;
 
-let currentListeners = [];
+  let currentListeners = [];
 
-function getState() {
-return currentState;
-}
-function subscribe(listener) {
-currentListeners.push(listener);
-}
-function dispatch(action) {
-currentState = reducer(currentState, action);
-currentListeners.forEach(v => v());
-return action;
-}
+  function getState() {
+    return currentState;
+  }
+  function subscribe(listener) {
+    currentListeners.push(listener);
+  }
+  function dispatch(action) {
+    currentState = reducer(currentState, action);
+    currentListeners.forEach(v => v());
+    return action;
+  }
 
-dispatch({type: '@@REDUX/INIT'}); //初始化
-return { getState, subscribe, dispatch }
+  dispatch({type: '@@REDUX/INIT'}); //初始化
+  return { getState, subscribe, dispatch }
 }
 ```
 

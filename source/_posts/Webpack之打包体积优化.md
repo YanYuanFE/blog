@@ -17,11 +17,11 @@ Webpack是当前大型项目的主流打包方案，自从将react的脚手架�
 
 webpack-bundle-analyzer可以对打包输出的chunk进行可视化分析, 可以看到打包后每个模块的大小，还能给出gizp压缩后的大小，在生产环境中加载的模块都是经过gzip压缩过的，可以作为真实访问的大小依据。
 
-```
+``` bash
 npm install --save-dev webpack-bundle-analyzer
 ```
 
-```
+``` js
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -58,7 +58,7 @@ Webpack4在mode为production的情况下默认开启了Tree-Shaking，但在你�
 url-loader和file-loader一般用来处理背景图，默认会把css中的背景图打包成Base64，当css中的背景图过大，会造成打包后的css变得庞大，在单页应用中，css阻塞DOM渲染，造成首页白屏时间过长。曾遇到过某项目build后css多达4M，严重影响用户体验，解决办法是配置url-loader的limit字段，超过一定字节则不打包成base64。配置后重新打包后的css约300k。
 
 
-```
+``` js
 {
     test: /\.(jpg|png|gif|svg)$/,
     loader: 'url-loader',
@@ -74,7 +74,7 @@ url-loader和file-loader一般用来处理背景图，默认会把css中的背�
 当我们使用React、Vue开发SPA应用时，webpack默认会输出一个js文件，这意味这首屏渲染的时候，会加载完所有的页面js，js体积过大极大影响首屏渲染速度，按需加载是一个不错的选择，对每一个路由对应的页面打包成单独的chunk。目前最流行的办法是使用动态import的方法。在react项目中，你可以使用react-loadable这个第三方库。
 
 
-```
+``` js
 import Loadable from 'react-loadable';
 import Loading from './my-loading-component';
 
@@ -93,7 +93,7 @@ moment、lodash、antd是使用频率很高的第三方库，但是库本身的�
 antd可以使用babel-plugin-import来进行按需加载，只需要安装babel-plugin-import然后配置.babelrc文件：
 
 
-```
+``` js
 {
   "plugins": [
     [
@@ -105,18 +105,18 @@ antd可以使用babel-plugin-import来进行按需加载，只需要安装babel-
   ]
 }
 
-```
+``` js
 babel-plugin-import目前已经可以使用于antd、antd-mobile、lodash等库。
 lodash也可以使用babel-plugin-import来进行按需加载，也可以使用babel-plugin-lodash来按需加载lodash。
 
 
-```
+``` bash
  npm i --save lodash
  npm i --save-dev babel-plugin-lodash @babel/cli @babel/preset-env
 ```
 
 
-```
+``` js
 // .babelrc
 {
   "plugins": ["lodash"],
@@ -128,7 +128,7 @@ moment会将所有本地化内容和核心功能一起打包，打包出来的 m
 
 你可以使用 IgnorePlugin 在打包时忽略本地化内容:
 
-```
+``` js
 new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/);
 ```
 
@@ -137,7 +137,7 @@ new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/);
 只需要在 webpack 的配置文件 plugins 处增加如下代码即可:
 
 
-```
+``` js
 plugins: [
   new webpack.ContextReplacementPlugin(
     /moment[/\\]locale$/,

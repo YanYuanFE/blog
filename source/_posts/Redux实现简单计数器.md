@@ -14,6 +14,26 @@ tags:
 
 当你已经了解一些redux的基础概念后，现在开始尝试使用redux吧，redux专注于状态管理，和react解耦，redux也可以结合Angular一起使用。本文尝试在react应用中使用redux来开发应用，而并没有使用react-redux，这有助于理解redux的数据流。
 
+> 本文完整代码请查看Github：https://github.com/YanYuanFE/redux-app
+
+``` bash
+// clone repo
+git clone https://github.com/YanYuanFE/redux-app.git
+
+
+cd redux-app
+
+// checkout branch
+git checkout part-1
+
+// install
+npm install
+
+// start
+npm start
+
+```
+
 ### 开始
 首先，初始化一个react应用，使用creat-react-app来进行创建，使用之前需要先安装，打开命令行，输入：
 

@@ -16,6 +16,26 @@ tags:
 前面通过一个简单的计数器应用来学习redux的基本原理和用法，在本篇文章，将介绍redux如何与react结合使用。
 为了方便使用，redux的作者封装了一个react专用的库react-redux，这也是接下来的重点。
 
+> 本文完整代码请查看Github：https://github.com/YanYuanFE/redux-app
+
+``` bash
+// clone repo
+git clone https://github.com/YanYuanFE/redux-app.git
+
+
+cd redux-app
+
+// checkout branch
+git checkout part-2
+
+// install
+npm install
+
+// start
+npm start
+
+```
+
 ### 安装
 
 
