@@ -1,5 +1,5 @@
 ---
-title: 编写高性能React代码的原则
+title: 编写高性能的React代码
 date: 2018-9-25 21:56:56
 banner: http://img.yanyuanfe.cn/react.jpg
 tags:
@@ -11,7 +11,7 @@ tags:
 
 <!--more-->
 
-回顾使用React开发的经历，已有接近两年了，一直想要写一篇文章来介绍如何编写高性能的React代码，又或者是性能调优之类的，于是，我总结了一些编写高性能React代码的原则，也能让你对React的理解更加深刻。
+回顾使用React开发的经历，已有接近两年了，一直想要写一篇文章来介绍如何编写高性能的React代码，又或者是性能调优之类的，于是，我总结了一些编写高性能React代码的实践，或许能让你对React的理解更加深刻。
 
 ### 影响React性能的主要因素
 React专注于构建用户界面，内部通过VirtualDOM和Diff算法实现视图的更新，本身拥有很高的性能。当组件的state和props改变的时候，React就会重新render，进而更新视图。在render过程中，react会将JSX语法转换为虚拟DOM，同时进行Diff算法比较新旧DOM的变化，从而对视图进行局部更新。试想，当render执行后，JSX转换虚拟DOM，然后Diff，最后发现新旧DOM是一样的，最后并没有更新视图。那么，就导致了不必要的render，造成了性能的浪费。所以，减少不必要的render，成为优化React性能的主要因素。
