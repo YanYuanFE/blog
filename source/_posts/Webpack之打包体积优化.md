@@ -105,7 +105,7 @@ antd可以使用babel-plugin-import来进行按需加载，只需要安装babel-
   ]
 }
 
-``` js
+```
 babel-plugin-import目前已经可以使用于antd、antd-mobile、lodash等库。
 lodash也可以使用babel-plugin-import来进行按需加载，也可以使用babel-plugin-lodash来按需加载lodash。
 
