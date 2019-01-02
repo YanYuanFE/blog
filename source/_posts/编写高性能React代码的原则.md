@@ -54,7 +54,7 @@ shouldComponentUpdate(nextProps, nextState) {
     }
 }
 ```
-当使用shouldComponentUpdate进行比较后，返回false的情况下，react将不会重新render。
+默认情况下shouldComponentUpdate返回true，即始终要重新渲染，此处我们使用shouldComponentUpdate进行比较后，返回false，react将不会重新render。
 
 当state为字符串等基本类型的时候，shouldComponentUpdate还能应付自如，那如果state是对象或者数组等引用类型呢？对于引用类型只能对其进行递归比较才能判断其是否相等，又或者是采用JSON.stringify(nextState.obj) === JSON.stringify(this.state.obj)进行比较，但是当对象嵌套层级较深或者函数、正则等类型时，shouldComponentUpdate便失去了它的用武之地。
 
@@ -83,11 +83,11 @@ const Text = ({ children = 'Hello World!' }) =>
 ```
 又或者
 
-```
+``` js
 <Button onClick={() => { console.log("Click"); }} />
 ```
 
-在以上情况下，bind每次都返回全新的函数，箭头函数在每次 render 时都会重新分配（和使用 bind 的方式相同），对于组件来说每次绑定的都是新的函数，Button组件在进行props比较的时候会认为前后props不一样，造成重新渲染。
+在以上情况下，bind每次都返回全新的函数，箭头函数在每次 render 时都会重新分配（和使用 bind 的方式相同），对于组件来说每次绑定的都是新的函数，Button组件在进行 props 比较的时候会认为前后props不一样，造成重新渲染。
 比较推荐的写法有两种：
 
 ``` js
@@ -116,7 +116,7 @@ update() {
 ``` js
 <Button style={{width: 100, marginTop: 50 }} />
 ```
-这种写法，每次style返回的都是全新的对象，我们知道，引用类型比较的是引用地址，每次的结果都是不相等，也会导致重新渲染。
+这种写法，每次render时style返回的都是全新的对象，我们知道，引用类型比较的是引用地址，每次的结果都是不相等，也会导致重新渲染。
 推荐的写法是使用className。
 ```js
 <Button className="btn" />
@@ -137,6 +137,9 @@ const DEFAULT_OPTIONS = [];
 
 <RadioGroup options={this.props.options || DEFAULT_OPTIONS} />
 ```
+<div class="tip">
+注意：此处的DEFAULT_OPTIONS不能写在render中，当写在render中的时候，还是会每次都生成一个新的数组，依然会重新渲染，正确的做法是放在组件外面或者使用this.DEFAULT_OPTIONS = []。
+</div>
 
 ### map 与 key
 在react中，你应该经常用到map来渲染一个列表，当你忘记为每个列表元素设置key属性的时候，react会在控制台发出警告a key should be provided for list items。
