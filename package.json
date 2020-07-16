@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.5.0"
+    "version": "3.9.0"
+  },
+  "scripts": {
+    "deploy": "hexo g -d"
   },
   "dependencies": {
     "global": "^4.3.2",
