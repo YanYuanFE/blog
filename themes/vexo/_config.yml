@@ -32,7 +32,7 @@ comment: gitment
 
 # gitment config
 gitment_owner: yanyuanfe
-gitment_repo: yanyuanfe.github.io
+gitment_repo: YanYuanFE.github.io
 gitment_oauth_id: 00c0950e46847a4acbc6
 gitment_oauth_secret: d8bd99572bbb807db2aae40bb13de8e3c2ee9049
 
