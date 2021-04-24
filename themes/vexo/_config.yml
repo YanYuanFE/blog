@@ -14,7 +14,7 @@ menu:
 
 # highlight
 highlight:
-  atom-one-dark
+  dracula
 
 # catalog
 catalog: true
